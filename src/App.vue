@@ -3,7 +3,7 @@
 
     <HeaderPage @runSearch="SearchText"/>
     
-    <MainPage :list="filmList"/>
+    <MainPage :filmlist="filmList" :serielist="serieList"/>
 
   </div>
 </template>
@@ -23,22 +23,34 @@ export default {
   data() {
     return {
       urlFilm:"https://api.themoviedb.org/3/search/movie?api_key=d950ce535bf05900292bb8ad7bb98628&language=en-US",
-      filmList: []
+      urlSerie:"https://api.themoviedb.org/3/search/tv?api_key=d950ce535bf05900292bb8ad7bb98628&language=en-US",
+      filmList: [],
+      serieList:[]
     }
   },
+  mounted() {
+    this.getFilmFromApi();
+    this.getSeriesFromApi();
+  },
   methods: {
-  getArrayFromApi(userChoice) {
-    console.log(userChoice);
+  getFilmFromApi(userChoice) {
     axios.get(`${this.urlFilm}&query=${userChoice}`)
     .then((response) => {
       this.filmList = response.data.results;
-      console.log(this.filmList);
+    });
+  },
+  getSeriesFromApi(userChoice) {
+    axios.get(`${this.urlSerie}&query=${userChoice}`)
+    .then((response) => {
+      this.serieList = response.data.results;
     });
   },
   SearchText(userChoice) {
-    this.getArrayFromApi(userChoice)
+    this.getFilmFromApi(userChoice);
+    this.getSeriesFromApi(userChoice);
     }
-  }
+  },
+  
 }
 </script>
 
