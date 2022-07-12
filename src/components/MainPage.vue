@@ -11,6 +11,9 @@
               </div>
               <div>
                 Lingua: {{film.original_language}} 
+
+                <!-- Flag -->
+                <img :src="getFlag(film.original_language)" :alt="film.original_language">
               </div>
               <div>
                 Voto: {{film.vote_average}}
@@ -43,17 +46,42 @@
 <script>
 export default {
 name: "MainPage",
-props: ['filmlist','serielist'] 
+props: ['filmlist','serielist'] ,
+methods : {
+
+  getFlag(Nationality) {
+    if(Nationality == 'en'){
+        Nationality = "gb";
+      } else if(Nationality == 'ja'){
+        Nationality = "jp";
+      } else if(Nationality == 'hi'){
+        Nationality = "in";
+      } else if(Nationality == 'cs'){
+        Nationality = "cz";
+      } else if(Nationality == 'ko'){
+        Nationality = "kr";
+      }
+    return `https://countryflagsapi.com/png/${Nationality}`;
+  }
 }
+}
+
+
 </script>
 
 <style lang="scss" scoped>
 main {
   display: flex;
 
-  li {
-  padding: 20px;
-  list-style-type: none;
+    li {
+    padding: 20px;
+    list-style-type: none;
+
+    img {
+      margin-left: 5px;
+      border: 1px solid black;
+      width: 20px;
+    }
   }
 }
 </style>
