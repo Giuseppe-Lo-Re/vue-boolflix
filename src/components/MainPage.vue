@@ -1,28 +1,28 @@
 <template>
   <main>
-    <div class="film">
-      <ul>
-          <li v-for="(film, index) in filmlist" :key="index">
-              <div>
-                Titolo: {{film.title}} 
-              </div>
-              <div>
-                Titolo originale: {{film.original_title}} 
-              </div>
-              <div>
-                Lingua: {{film.original_language}} 
 
-                <!-- Flag -->
-                <img :src="getFlag(film.original_language)" :alt="film.original_language">
-              </div>
-              <div>
-                Voto: {{film.vote_average}}
-              </div>
-          </li>
-      </ul>
-    </div>
+    <!-- Film -->
+    <ul>
+        <li v-for="(film, index) in filmlist" :key="index">
+            <div>
+              Titolo: {{film.title}} 
+            </div>
+            <div>
+              Titolo originale: {{film.original_title}} 
+            </div>
+            <div>
+              Lingua: {{film.original_language}} 
 
-  <div class="serie">
+              <!-- Flag -->
+              <img :src="getFlag(film.original_language)" :alt="film.original_language">
+            </div>
+            <div>
+              Voto: {{film.vote_average}}
+            </div>
+        </li>
+    </ul>
+
+    <!-- Series -->
     <ul>
         <li v-for="(serie, index) in serielist" :key="index">
           <div>
@@ -33,13 +33,15 @@
           </div>
           <div>
             Lingua: {{serie.original_language}}
+
+            <!-- Flag -->
+            <img :src="getFlag(serie.original_language)" :alt="serie.original_language">
           </div>
           <div>
             Voto: {{serie.vote_average}} 
           </div>
         </li>
     </ul>
-  </div>
   </main>
 </template>
 
@@ -60,6 +62,8 @@ methods : {
         Nationality = "cz";
       } else if(Nationality == 'ko'){
         Nationality = "kr";
+      } else if(Nationality == 'sv'){
+        Nationality = "ch";
       }
     return `https://countryflagsapi.com/png/${Nationality}`;
   }
@@ -81,6 +85,7 @@ main {
       margin-left: 5px;
       border: 1px solid black;
       width: 20px;
+      height: 12px;
     }
   }
 }
