@@ -1,31 +1,31 @@
 <template>
-    <header>
+  <header>
 
-      <!-- Logo -->
-      <h1 class="logo">
-        BOOFLIX
-      </h1>
-      <div class="form">
+    <!-- Logo -->
+    <h1 class="logo">
+      BOOFLIX
+    </h1>
+    <div class="form">
 
-        <!-- Input -->
-        <input 
-          type="text" 
-          name="search" 
-          id="search"
-          placeholder="Search"
-          v-model="userSearch"
-          @keyup.enter="$emit('runSearch', userSearch)"
-        >
+      <!-- Input -->
+      <input 
+        type="text" 
+        name="search" 
+        id="search"
+        placeholder="Search"
+        v-model="userSearch"
+        @keyup.enter="$emit('runSearch', userSearch)"
+      >
 
-        <!-- Button -->
-        <button 
-          type="submit"
-          @click="$emit('runSearch', userSearch)"
-        >
-          Search
-        </button>
-      </div>
-    </header>
+      <!-- Button -->
+      <button 
+        type="submit"
+        @click="$emit('runSearch', userSearch)"
+      >
+        Search
+      </button>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -52,11 +52,6 @@ header {
     color: red;
     font-size: 24px;
     text-align: left;
-  }
-
-  .form {
-    
-    display: inline-block;
   }
 }
 </style>

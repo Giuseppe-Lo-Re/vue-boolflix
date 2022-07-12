@@ -28,10 +28,7 @@ export default {
       serieList:[]
     }
   },
-  mounted() {
-    this.getFilmFromApi();
-    this.getSeriesFromApi();
-  },
+
   methods: {
   getFilmFromApi(userChoice) {
     axios.get(`${this.urlFilm}&query=${userChoice}`)
@@ -39,6 +36,7 @@ export default {
       this.filmList = response.data.results;
     });
   },
+  
   getSeriesFromApi(userChoice) {
     axios.get(`${this.urlSerie}&query=${userChoice}`)
     .then((response) => {
