@@ -10,21 +10,25 @@ import axios from 'axios';
 
 export default {
 name: "MainPage",
-
+props: ['text'],
 data() {
     return {
       urlFilm:"https://api.themoviedb.org/3/search/movie?api_key=d950ce535bf05900292bb8ad7bb98628&language=en-US",
-      filmList: []
+      filmList: [],
+      textToSearch: []
     };
 },
 methods: {
   getArrayFromApi(query) {
     axios.get(`${this.urlFilm}&query=${query}`)
     .then((response) => {
-      const arrayFilm = response.data.results;
+      const filmList = response.data.results;
     });
+  },
+  SearchText(text) {
+      this.textToSearch = text;
+    }
   }
-}
 }
 </script>
 

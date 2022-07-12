@@ -10,14 +10,16 @@
         <!-- Input -->
         <input 
           type="text" 
+          name="search" 
+          id="search"
           placeholder="Search"
-          v-model="userText"
+          v-model="userSearch"
         >
 
         <!-- Button -->
         <button 
           type="submit"
-          @click="$emit('runSearch', userText)"
+          @click="$emit('runSearch', userSearch)"
         >
           Search
         </button>
@@ -30,7 +32,7 @@ export default {
 name: "HeaderPage",
 data() {
   return {
-    text: ''
+    userSearch: ''
   }
 }
 }

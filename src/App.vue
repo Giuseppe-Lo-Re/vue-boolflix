@@ -1,8 +1,8 @@
 <template>
   <div id="app">
 
-    <HeaderPage />
-    <!-- @runSearch="function()" -->
+    <HeaderPage @runSearch="SearchText()"/>
+    
     <MainPage />
 
   </div>
