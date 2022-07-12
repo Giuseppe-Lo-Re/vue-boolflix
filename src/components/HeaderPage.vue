@@ -14,6 +14,7 @@
           id="search"
           placeholder="Search"
           v-model="userSearch"
+          @keyup.enter="$emit('runSearch', userSearch)"
         >
 
         <!-- Button -->
