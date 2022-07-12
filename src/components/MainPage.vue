@@ -52,17 +52,17 @@ props: ['filmlist','serielist'] ,
 methods : {
 
   getFlag(Nationality) {
-    if(Nationality == 'en'){
+    if(Nationality == 'en') {
         Nationality = "gb";
-      } else if(Nationality == 'ja'){
+      } else if(Nationality == 'ja') {
         Nationality = "jp";
-      } else if(Nationality == 'hi'){
+      } else if(Nationality == 'hi') {
         Nationality = "in";
-      } else if(Nationality == 'cs'){
+      } else if(Nationality == 'cs') {
         Nationality = "cz";
-      } else if(Nationality == 'ko'){
+      } else if(Nationality == 'ko') {
         Nationality = "kr";
-      } else if(Nationality == 'sv'){
+      } else if(Nationality == 'sv') {
         Nationality = "ch";
       }
     return `https://countryflagsapi.com/png/${Nationality}`;
