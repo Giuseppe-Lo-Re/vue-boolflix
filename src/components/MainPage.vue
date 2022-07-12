@@ -1,6 +1,13 @@
 <template>
   <main>
-
+    <ul>
+        <li class="text-center" v-for="(film, index) in filmList" :key="index">
+            <div>Titolo: {{film.title}}</div>
+            <div>Titolo originale: {{film.original_title}}</div>
+            <div>Lingua: {{film.original_language}}</div>
+            <div>Voto: {{film.vote_average}}</div>
+        </li>
+    </ul>
   </main>
 </template>
 
@@ -22,7 +29,8 @@ methods: {
   getArrayFromApi(query) {
     axios.get(`${this.urlFilm}&query=${query}`)
     .then((response) => {
-      const filmList = response.data.results;
+      this.filmList = response.data.results;
+
     });
   },
   SearchText(text) {
