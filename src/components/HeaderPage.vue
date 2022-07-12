@@ -22,7 +22,6 @@
           Search
         </button>
       </div>
-
     </header>
 </template>
 
