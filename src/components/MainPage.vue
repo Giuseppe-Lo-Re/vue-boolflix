@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 
 
 export default {
 name: "MainPage",
-props: ['text'],
+props: ['searchtext'], 
 data() {
     return {
       urlFilm:"https://api.themoviedb.org/3/search/movie?api_key=d950ce535bf05900292bb8ad7bb98628&language=en-US",
@@ -26,16 +26,15 @@ data() {
     };
 },
 methods: {
-  getArrayFromApi(query) {
-    axios.get(`${this.urlFilm}&query=${query}`)
-    .then((response) => {
-      this.filmList = response.data.results;
-      console.log(query) 
-    });
+  getArrayFromApi() {
+    console.log(this.searchtext);
+    // axios.get(`${this.urlFilm}&query=${this.searchtext}`)
+    // .then((response) => {
+    //   this.filmList = response.data.results;
+    //   console.log(this.filmList);
+    // });
   },
-  SearchText(text) {
-      this.textToSearch = text;
-    }
+
   }
 }
 </script>

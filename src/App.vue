@@ -1,9 +1,9 @@
 <template>
   <div id="app">
 
-    <HeaderPage @runSearch="SearchText()"/>
+    <HeaderPage @runSearch="SearchText"/>
     
-    <MainPage />
+    <MainPage :searchtext="activeSearch"/>
 
   </div>
 </template>
@@ -21,7 +21,12 @@ export default {
   },
   data() {
     return {
-      
+      activeSearch:''
+    }
+  },
+  methods: {
+    SearchText(userChoice) {
+      this.activeSearch = userChoice;
     }
   }
 }
