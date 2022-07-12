@@ -30,7 +30,7 @@ methods: {
     axios.get(`${this.urlFilm}&query=${query}`)
     .then((response) => {
       this.filmList = response.data.results;
-
+      console.log(query) 
     });
   },
   SearchText(text) {
