@@ -3,7 +3,11 @@
 
     <!-- Film -->
     <ul>
-      <li v-for="(film, index) in filmlist" :key="index">
+      <li 
+        v-for="(film, index) in filmlist" 
+        :key="index" 
+        class="Film"
+      >
 
         <!-- Cover Image -->
         <img class="cover" :src="getCoverImage(film.poster_path)" :alt="film.title">
@@ -29,14 +33,18 @@
         <!-- Vote Average -->
         <div>
           <span>Media Voto:</span>
-          <span class="star"> <i class="fa-solid fa-star star-space"></i> </span>
+          <span class="star"> <i v-for="n in 5" :key="n" :class="{'gold' : n <= trasformVote(film.vote_average)}" class="fa-solid fa-star star-space"></i> </span>
         </div>
       </li>
     </ul>
 
     <!-- Series -->
     <ul>
-      <li v-for="(serie, index) in serielist" :key="index">
+      <li 
+        v-for="(serie, index) in serielist" 
+        :key="index" 
+        class="series"
+      >
 
         <!-- Cover Image -->
         <img class="cover" :src="getCoverImage(serie.poster_path)" :alt="serie.name">
@@ -104,7 +112,7 @@ getCoverImage(posterpath) {
 
 // Trasforma il voto in stelle da 1 a 5
 trasformVote(star) {
-  const voteStars = star/ 2;
+  const voteStars = star / 2;
   return Math.round(voteStars);
 }
 }
@@ -122,14 +130,17 @@ main {
   ul {
     display: flex;
     flex-wrap: wrap;
+    text-align: center;
+
   }
 
   li {
   padding: 20px;
-
+  width: calc(100% / 5);
+  
   .cover {
-    width: 200px;
-    min-height: 200px;
+    width: 220px;
+    max-height: 300px;
   }
 
   .flag {
@@ -139,9 +150,16 @@ main {
     height: 12px;
   }
 
-  .star {
+  span {
+    i {
     color: yellow;
   }
+
+  .film {
+
+  }
+  }
+  
 }
 }
 </style>
