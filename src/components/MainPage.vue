@@ -8,32 +8,36 @@
         :key="index" 
         class="Film"
       >
+        <div class="card">
+          <!-- Cover Image -->
+          <img class="cover" :src="getCoverImage(film.poster_path)" :alt="film.title">
 
-        <!-- Cover Image -->
-        <img class="cover" :src="getCoverImage(film.poster_path)" :alt="film.title">
+          <div class="text">
 
-        <!-- Title -->
-        <div>
-          <span>Titolo:</span> {{film.title}} 
-        </div>
+            <!-- Title -->
+            <div>
+              <span>Titolo:</span> {{film.title}} 
+            </div>
 
-        <!-- Original Title -->
-        <div>
-          <span>Titolo originale:</span> {{film.original_title}} 
-        </div>
+            <!-- Original Title -->
+            <div>
+              <span>Titolo originale:</span> {{film.original_title}} 
+            </div>
 
-        <!-- Language -->
-        <div>
-          <span>Lingua:</span> {{film.original_language}} 
+            <!-- Language -->
+            <div>
+              <span>Lingua:</span> {{film.original_language}} 
 
-          <!-- Flag -->
-          <img class="flag" :src="getFlag(film.original_language)" :alt="film.original_language">
-        </div>
+              <!-- Flag -->
+              <img class="flag" :src="getFlag(film.original_language)" :alt="film.original_language">
+            </div>
 
-        <!-- Vote Average -->
-        <div>
-          <span>Media Voto:</span>
-          <span class="star"> <i v-for="n in 5" :key="n" :class="{'gold' : n <= trasformVote(film.vote_average)}" class="fa-solid fa-star star-space"></i> </span>
+            <!-- Vote Average -->
+            <div>
+              <span>Media Voto:</span>
+              <span class="star"> <i v-for="n in 5" :key="n" :class="{'gold' : n <= trasformVote(film.vote_average)}" class="fa-solid fa-star star-space"></i> </span>
+            </div>
+          </div>
         </div>
       </li>
     </ul>
@@ -49,27 +53,30 @@
         <!-- Cover Image -->
         <img class="cover" :src="getCoverImage(serie.poster_path)" :alt="serie.name">
 
-        <!-- Title -->
-        <div>
-          <span>Titolo:</span> {{serie.name}} 
-        </div>
+        <div class="text">
 
-        <!-- Original Title -->
-        <div>
-          <span>Titolo originale:</span> {{serie.original_name}}
-        </div>
+          <!-- Title -->
+          <div>
+            <span>Titolo:</span> {{serie.name}} 
+          </div>
 
-        <!-- Language -->
-        <div>
-          <span>Lingua:</span> {{serie.original_language}}
+          <!-- Original Title -->
+          <div>
+            <span>Titolo originale:</span> {{serie.original_name}}
+          </div>
 
-          <!-- Flag -->
-          <img class="flag" :src="getFlag(serie.original_language)" :alt="serie.original_language">
-        </div>
+          <!-- Language -->
+          <div>
+            <span>Lingua:</span> {{serie.original_language}}
 
-        <!-- Vote Average -->
-        <div>
-          <span>Media Voto:</span> {{serie.vote_average}} 
+            <!-- Flag -->
+            <img class="flag" :src="getFlag(serie.original_language)" :alt="serie.original_language">
+          </div>
+
+          <!-- Vote Average -->
+          <div>
+            <span>Media Voto:</span> {{serie.vote_average}} 
+          </div>
         </div>
       </li>
     </ul>
@@ -118,8 +125,6 @@ trasformVote(star) {
 }
 }
 
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -135,12 +140,35 @@ main {
   }
 
   li {
-  padding: 20px;
-  width: calc(100% / 5);
+  width: calc((100% / 5) - 20px);
+  height: 100%;
+  border: 1px solid red;
+  margin: 20px auto;
+
+  .card {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    min-height: 500px;
+
+    .text {
+      padding-top: 80px;
+    }
+
+    span {
+      font-style: italic;
+    }
+
+    div {
+      text-align: left;
+      padding-left: 10px;
+    }
+  }
   
   .cover {
     width: 220px;
     max-height: 300px;
+    
   }
 
   .flag {
@@ -153,10 +181,6 @@ main {
   span {
     i {
     color: yellow;
-  }
-
-  .film {
-
   }
   }
   

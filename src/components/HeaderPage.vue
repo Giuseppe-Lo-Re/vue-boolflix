@@ -13,7 +13,7 @@
         type="text" 
         name="search" 
         id="search"
-        placeholder="Search"
+        placeholder="Cosa vuoi guardare?"
         v-model="userSearch"
         @keyup.enter="$emit('runSearch', userSearch)"
       >
@@ -23,7 +23,7 @@
         type="submit"
         @click="$emit('runSearch', userSearch)"
       >
-        Search
+        cerca
       </button>
     </div>
   </header>
@@ -49,10 +49,21 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 20px;
+  padding-inline: 7px;
 
   img {
     width: 150px;
+    padding-top: 7px;
+  }
+
+  input {
+    padding: 10px;
+  }
+  button {
+    margin-left: 10px;
+    margin-right: 5px;
+    padding: 10px;
+    background-color: red;
   }
 }
 </style>
