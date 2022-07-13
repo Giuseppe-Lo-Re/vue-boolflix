@@ -3,44 +3,67 @@
 
     <!-- Film -->
     <ul>
-        <li v-for="(film, index) in filmlist" :key="index">
-            <div>
-              Titolo: {{film.title}} 
-            </div>
-            <div>
-              Titolo originale: {{film.original_title}} 
-            </div>
-            <div>
-              Lingua: {{film.original_language}} 
+      <li v-for="(film, index) in filmlist" :key="index">
 
-              <!-- Flag -->
-              <img :src="getFlag(film.original_language)" :alt="film.original_language">
-            </div>
-            <div>
-              Voto: {{film.vote_average}}
-            </div>
-        </li>
+        <!-- Cover Image -->
+        <img class="cover" :src="getCoverImage(film.poster_path)" :alt="film.title">
+
+        <!-- Title -->
+        <div>
+          <span>Titolo:</span> {{film.title}} 
+        </div>
+
+        <!-- Original Title -->
+        <div>
+          <span>Titolo originale:</span> {{film.original_title}} 
+        </div>
+
+        <!-- Language -->
+        <div>
+          <span>Lingua:</span> {{film.original_language}} 
+
+          <!-- Flag -->
+          <img class="flag" :src="getFlag(film.original_language)" :alt="film.original_language">
+        </div>
+
+        <!-- Vote Average -->
+        <div>
+          <span>Media Voto:</span>
+          <span class="star"> <i class="fa-solid fa-star star-space"></i> </span>
+        </div>
+      </li>
     </ul>
 
     <!-- Series -->
     <ul>
-        <li v-for="(serie, index) in serielist" :key="index">
-          <div>
-            Titolo: {{serie.name}} 
-          </div>
-          <div>
-            Titolo originale: {{serie.original_name}}
-          </div>
-          <div>
-            Lingua: {{serie.original_language}}
+      <li v-for="(serie, index) in serielist" :key="index">
 
-            <!-- Flag -->
-            <img :src="getFlag(serie.original_language)" :alt="serie.original_language">
-          </div>
-          <div>
-            Voto: {{serie.vote_average}} 
-          </div>
-        </li>
+        <!-- Cover Image -->
+        <img class="cover" :src="getCoverImage(serie.poster_path)" :alt="serie.name">
+
+        <!-- Title -->
+        <div>
+          <span>Titolo:</span> {{serie.name}} 
+        </div>
+
+        <!-- Original Title -->
+        <div>
+          <span>Titolo originale:</span> {{serie.original_name}}
+        </div>
+
+        <!-- Language -->
+        <div>
+          <span>Lingua:</span> {{serie.original_language}}
+
+          <!-- Flag -->
+          <img class="flag" :src="getFlag(serie.original_language)" :alt="serie.original_language">
+        </div>
+
+        <!-- Vote Average -->
+        <div>
+          <span>Media Voto:</span> {{serie.vote_average}} 
+        </div>
+      </li>
     </ul>
   </main>
 </template>
@@ -51,24 +74,42 @@ name: "MainPage",
 props: ['filmlist','serielist'] ,
 methods : {
 
-  getFlag(Nationality) {
-    if(Nationality == 'en') {
-        Nationality = "gb";
-      } else if(Nationality == 'ja') {
-        Nationality = "jp";
-      } else if(Nationality == 'hi') {
-        Nationality = "in";
-      } else if(Nationality == 'cs') {
-        Nationality = "cz";
-      } else if(Nationality == 'ko') {
-        Nationality = "kr";
-      } else if(Nationality == 'sv') {
-        Nationality = "ch";
-      }
-    return `https://countryflagsapi.com/png/${Nationality}`;
+// Sostituisce le bandiere mancanti
+getFlag(Nationality) {
+  if(Nationality == 'en') {
+      Nationality = "gb";
+    } else if(Nationality == 'ja') {
+      Nationality = "jp";
+    } else if(Nationality == 'hi') {
+      Nationality = "in";
+    } else if(Nationality == 'cs') {
+      Nationality = "cz";
+    } else if(Nationality == 'ko') {
+      Nationality = "kr";
+    } else if(Nationality == 'sv') {
+      Nationality = "ch";
+    } else if(Nationality == 'zh') {
+      Nationality = "hk";
+    }
+  return `https://countryflagsapi.com/png/${Nationality}`;
+},
+
+// Scarica le immagini di copertina
+getCoverImage(posterpath) {
+  if(posterpath == null) {
+    return `https://www.movienewz.com/wp-content/uploads/2014/07/poster-holder.jpg`;
   }
+  return `https://image.tmdb.org/t/p/w342${posterpath}`;
+},
+
+// Trasforma il voto in stelle da 1 a 5
+trasformVote(star) {
+  const voteStars = star/ 2;
+  return Math.round(voteStars);
 }
 }
+}
+
 
 
 </script>
@@ -76,16 +117,30 @@ methods : {
 <style lang="scss" scoped>
 @import "../style/common.scss";
 main {
-  color: white;
+  color: black;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   li {
   padding: 20px;
-  list-style-type: none;
 
-  img {
+  .cover {
+    width: 200px;
+    min-height: 200px;
+  }
+
+  .flag {
     margin-left: 5px;
     border: 1px solid black;
     width: 20px;
     height: 12px;
+  }
+
+  .star {
+    color: yellow;
   }
 }
 }

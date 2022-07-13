@@ -2,9 +2,10 @@
   <header>
 
     <!-- Logo -->
-    <h1 class="logo">
-      BOOFLIX
-    </h1>
+    <div class="logo">
+      <img src="../assets/img/logo.png" alt="logo">
+    </div>
+
     <div class="form">
 
       <!-- Input -->
@@ -50,10 +51,8 @@ header {
   align-items: center;
   padding-inline: 20px;
 
-  .logo {
-    color: red;
-    font-size: 24px;
-    text-align: left;
+  img {
+    width: 150px;
   }
 }
 </style>
