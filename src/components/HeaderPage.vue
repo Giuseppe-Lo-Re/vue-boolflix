@@ -49,7 +49,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 7px;
+  padding-inline: 15px;
 
   img {
     width: 150px;
@@ -61,7 +61,6 @@ header {
   }
   button {
     margin-left: 10px;
-    margin-right: 5px;
     padding: 10px;
     background-color: red;
   }

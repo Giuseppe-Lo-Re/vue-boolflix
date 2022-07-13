@@ -9,6 +9,7 @@
         class="Film"
       >
         <div class="card">
+
           <!-- Cover Image -->
           <img class="cover" :src="getCoverImage(film.poster_path)" :alt="film.title">
 
@@ -35,49 +36,53 @@
             <!-- Vote Average -->
             <div>
               <span>Media Voto:</span>
-              <span class="star"> <i v-for="n in 5" :key="n" :class="{'star' : n <= trasformVote(film.vote_average)}" class="fa-solid fa-star star-space"></i></span>
+              <span> <i v-for="n in trasformVote(film.vote_average)" :key="n" class="fa-solid fa-star star-space"></i></span>
             </div>
           </div>
         </div>
       </li>
     </ul>
 
-    <!-- Series -->
+    <!-- Series --> 
     <ul>
       <li 
         v-for="(serie, index) in serielist" 
         :key="index" 
         class="series"
       >
+        <div class="card">
 
-        <!-- Cover Image -->
-        <img class="cover" :src="getCoverImage(serie.poster_path)" :alt="serie.name">
+          <!-- Cover Image -->
+          <img class="cover" :src="getCoverImage(serie.poster_path)" :alt="serie.name">
 
-        <div class="text">
+          <div class="text">
 
-          <!-- Title -->
-          <div>
-            <span>Titolo:</span> {{serie.name}} 
-          </div>
+            <!-- Title -->
+            <div>
+              <span>Titolo:</span> {{serie.name}} 
+            </div>
 
-          <!-- Original Title -->
-          <div>
-            <span>Titolo originale:</span> {{serie.original_name}}
-          </div>
+            <!-- Original Title -->
+            <div>
+              <span>Titolo originale:</span> {{serie.original_name}}
+            </div>
 
-          <!-- Language -->
-          <div>
-            <span>Lingua:</span> {{serie.original_language}}
+            <!-- Language -->
+            <div>
+              <span>Lingua:</span> {{serie.original_language}}
 
-            <!-- Flag -->
-            <img class="flag" :src="getFlag(serie.original_language)" :alt="serie.original_language">
-          </div>
+              <!-- Flag -->
+              <img class="flag" :src="getFlag(serie.original_language)" :alt="serie.original_language">
+            </div>
 
-          <!-- Vote Average -->
-          <div>
-            <span>Media Voto:</span> {{serie.vote_average}} 
+            <!-- Vote Average -->
+            <div>
+              <span>Media Voto:</span>
+              <span> <i v-for="n in trasformVote(serie.vote_average)" :key="n" class="fa-solid fa-star star-space"></i></span>
+            </div>
           </div>
         </div>
+
       </li>
     </ul>
   </main>
@@ -136,6 +141,9 @@ main {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
+    gap: 15px;
+    justify-content: center;
+    padding-top: 15px;
 
   }
 
@@ -143,16 +151,16 @@ main {
   width: calc((100% / 5) - 20px);
   height: 100%;
   border: 1px solid red;
-  margin: 20px auto;
 
   .card {
     background-color: black;
     color: white;
     padding: 10px;
     min-height: 500px;
+    cursor: pointer;
 
     .text {
-      padding-top: 80px;
+      padding-top: 60px;
     }
 
     span {
@@ -176,7 +184,7 @@ main {
     margin-left: 5px;
     border: 1px solid black;
     width: 20px;
-    height: 12px;
+    height: 14px;
   }
 
   span {
