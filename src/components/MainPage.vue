@@ -17,17 +17,17 @@
 
             <!-- Title -->
             <div>
-              <span>Titolo:</span> {{film.title}} 
+              <span>Titolo: </span> {{film.title}} 
             </div>
 
             <!-- Original Title -->
             <div>
-              <span>Titolo originale:</span> {{film.original_title}} 
+              <span>Titolo originale: </span> {{film.original_title}} 
             </div>
 
             <!-- Language -->
             <div>
-              <span>Lingua:</span> {{film.original_language}} 
+              <span>Lingua: </span> {{film.original_language}} 
 
               <!-- Flag -->
               <img class="flag" :src="getFlag(film.original_language)" :alt="film.original_language">
@@ -35,8 +35,14 @@
 
             <!-- Vote Average -->
             <div>
-              <span>Media Voto:</span>
+              <span>Media Voto: </span>
               <span> <i v-for="n in trasformVote(film.vote_average)" :key="n" class="fa-solid fa-star star-space"></i></span>
+            </div>
+
+            <!-- Overview -->
+            <div>
+              <span>Overview: </span>
+              <div class="overview">{{ film.overview }}</div>
             </div>
           </div>
         </div>
@@ -79,6 +85,12 @@
             <div>
               <span>Media Voto:</span>
               <span> <i v-for="n in trasformVote(serie.vote_average)" :key="n" class="fa-solid fa-star star-space"></i></span>
+            </div>
+
+            <!-- Overview -->
+            <div>
+              <span>Overview:</span>
+              <div class="overview">{{ serie.overview }}</div>
             </div>
           </div>
         </div>
@@ -152,34 +164,50 @@ main {
   height: 100%;
   border: 1px solid red;
 
+  
+
   .card {
     background-color: black;
     color: white;
     padding: 10px;
-    min-height: 500px;
     cursor: pointer;
+    height: 340px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    // overflow: hidden;
 
+    .cover {
+    height: 320px;
+    display: block;
+    }
     .text {
-      padding-top: 60px;
+      min-height: 320px;
+      display: none;
     }
 
-    span {
-      font-style: italic;
+    &:hover .cover{
+    display: none;
+    }
+
+    &:hover .text{
+      display: block;
     }
 
     div {
       text-align: left;
-      padding-left: 10px;
+      padding: 5px;
+
+      span {
+      font-weight: bold;
+    }
+    }
+
+    .overview {
+      font-style: italic;
+      // overflow-y: scroll;
     }
   }
   
-  .cover {
-    width: 220px;
-    max-height: 300px;
-    padding-top: 10px;
-    
-  }
-
+  
   .flag {
     margin-left: 5px;
     border: 1px solid black;
