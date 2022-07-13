@@ -146,6 +146,7 @@ trasformVote(star) {
 
 <style lang="scss" scoped>
 @import "../style/common.scss";
+
 main {
   color: black;
 
@@ -173,7 +174,7 @@ main {
     cursor: pointer;
     height: 340px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-    // overflow: hidden;
+    overflow: auto;
 
     .cover {
     height: 320px;
@@ -203,6 +204,7 @@ main {
 
     .overview {
       font-style: italic;
+      font-size: 14px;
       // overflow-y: scroll;
     }
   }
@@ -218,9 +220,8 @@ main {
   span {
     i {
     color: yellow;
+    }
   }
-  }
-  
 }
 }
 </style>
