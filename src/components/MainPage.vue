@@ -35,7 +35,7 @@
             <!-- Vote Average -->
             <div>
               <span>Media Voto:</span>
-              <span class="star"> <i v-for="n in 5" :key="n" :class="{'gold' : n <= trasformVote(film.vote_average)}" class="fa-solid fa-star star-space"></i> </span>
+              <span class="star"> <i v-for="n in 5" :key="n" :class="{'star' : n <= trasformVote(film.vote_average)}" class="fa-solid fa-star star-space"></i></span>
             </div>
           </div>
         </div>
@@ -168,6 +168,7 @@ main {
   .cover {
     width: 220px;
     max-height: 300px;
+    padding-top: 10px;
     
   }
 
