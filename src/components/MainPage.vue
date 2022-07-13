@@ -74,20 +74,20 @@ methods : {
 </script>
 
 <style lang="scss" scoped>
+@import "../style/common.scss";
 main {
-  display: flex;
+  color: white;
+  li {
+  padding: 20px;
+  list-style-type: none;
 
-    li {
-    padding: 20px;
-    list-style-type: none;
-
-    img {
-      margin-left: 5px;
-      border: 1px solid black;
-      width: 20px;
-      height: 12px;
-    }
+  img {
+    margin-left: 5px;
+    border: 1px solid black;
+    width: 20px;
+    height: 12px;
   }
+}
 }
 </style>
 

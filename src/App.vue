@@ -53,5 +53,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./style/common.scss";
 
 </style>

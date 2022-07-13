@@ -40,6 +40,8 @@ data() {
 </script>
 
 <style lang="scss" scoped>
+@import "../style/common.scss";
+
 header {
   height: 70px;
   background-color: black;
