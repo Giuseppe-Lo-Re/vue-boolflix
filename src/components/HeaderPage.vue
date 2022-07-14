@@ -54,6 +54,7 @@ header {
   img {
     width: 150px;
     padding-top: 7px;
+    cursor: pointer;
   }
 
   input {

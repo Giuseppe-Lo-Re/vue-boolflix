@@ -16,7 +16,8 @@
 
             <!-- Title -->
             <div>
-              <span>Titolo: </span> {{ film.title }} 
+              <span>
+                Titolo: </span> {{ film.title }} 
             </div>
 
             <!-- Original Title -->
@@ -35,7 +36,10 @@
             <!-- Vote Average -->
             <div>
               <span>Media Voto: </span>
-              <span> <i v-for="n in trasformVote(film.vote_average)" :key="n" class="fa-solid fa-star star-space"></i></span>
+              <span>
+                <i v-for="n in trasformVote(film.vote_average)" :key="n" class="fa-solid fa-star star-space"></i>
+                <i v-for="n in 5 - trasformVote(film.vote_average)" :key="n" class="far fa-star"></i>
+                </span>
             </div>
 
             <!-- Overview -->
@@ -63,17 +67,17 @@
 
             <!-- Title -->
             <div>
-              <span>Titolo:</span> {{ series.name }} 
+              <span>Titolo: </span> {{ series.name }} 
             </div>
 
             <!-- Original Title -->
             <div>
-              <span>Titolo originale:</span> {{ series.original_name }}
+              <span>Titolo originale: </span> {{ series.original_name }}
             </div>
 
             <!-- Language -->
             <div>
-              <span>Lingua:</span> {{ series.original_language }}
+              <span>Lingua: </span> {{ series.original_language }}
 
               <!-- Flag -->
               <img class="flag" :src="getFlag(series.original_language)" :alt="series.original_language">
@@ -81,7 +85,7 @@
 
             <!-- Vote Average -->
             <div>
-              <span>Media Voto:</span>
+              <span>Media Voto: </span>
               <span>
                 <i v-for="n in trasformVote(series.vote_average)" :key="n" class="fas fa-star"></i>
                 <i v-for="n in 5 - trasformVote(series.vote_average)" :key="n" class="far fa-star"></i>
@@ -90,7 +94,7 @@
 
             <!-- Overview -->
             <div>
-              <span>Overview:</span>
+              <span>Overview: </span>
               <div class="overview">{{ series.overview }}</div>
             </div>
           </div>
@@ -160,22 +164,22 @@ main {
     padding-top: 15px;
 
     li {
-    width: calc((100% / 5) - 20px);
-    height: 100%;
-    border: 3px solid red;
+      width: calc((100% / 5) - 20px);
+      height: 100%;
+      border: 3px solid red;
 
     .card {
-    background-color: black;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    height: 340px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-    overflow: auto;
+      background-color: black;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      height: 340px;
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+      overflow: auto;
 
     .cover {
-    height: 320px;
-    display: block;
+      height: 320px;
+      display: block;
     }
 
     .text {
@@ -183,11 +187,11 @@ main {
       display: none;
     }
 
-    &:hover .cover{
-    display: none;
+    &:hover .cover {
+      display: none;
     }
 
-    &:hover .text{
+    &:hover .text {
       display: block;
     }
 
@@ -196,8 +200,8 @@ main {
       padding: 5px;
 
       span {
-      font-weight: bold;
-    }
+        font-weight: bold;
+      }
     }
 
     .overview {
@@ -214,11 +218,11 @@ main {
 
     span {
       i {
-      color: yellow;
+        color: yellow;
       }
     }
   }
-  }
+}
 }
 }
 </style>
