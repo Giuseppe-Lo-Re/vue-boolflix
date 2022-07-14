@@ -16,17 +16,17 @@
 
             <!-- Title -->
             <div>
-              <span>Titolo: </span> {{film.title}} 
+              <span>Titolo: </span> {{ film.title }} 
             </div>
 
             <!-- Original Title -->
             <div>
-              <span>Titolo originale: </span> {{film.original_title}} 
+              <span>Titolo originale: </span> {{ film.original_title }} 
             </div>
 
             <!-- Language -->
             <div>
-              <span>Lingua: </span> {{film.original_language}} 
+              <span>Lingua: </span> {{ film.original_language }} 
 
               <!-- Flag -->
               <img class="flag" :src="getFlag(film.original_language)" :alt="film.original_language">
@@ -51,44 +51,47 @@
     <!-- Series --> 
     <ul>
       <li 
-        v-for="(serie, index) in serielist" 
+        v-for="(series, index) in serieslist" 
         :key="index" 
         class="series"
       >
         <div class="card">
 
           <!-- Cover Image -->
-          <img class="cover" :src="getCoverImage(serie.poster_path)" :alt="serie.name">
+          <img class="cover" :src="getCoverImage(series.poster_path)" :alt="series.name">
           <div class="text">
 
             <!-- Title -->
             <div>
-              <span>Titolo:</span> {{serie.name}} 
+              <span>Titolo:</span> {{ series.name }} 
             </div>
 
             <!-- Original Title -->
             <div>
-              <span>Titolo originale:</span> {{serie.original_name}}
+              <span>Titolo originale:</span> {{ series.original_name }}
             </div>
 
             <!-- Language -->
             <div>
-              <span>Lingua:</span> {{serie.original_language}}
+              <span>Lingua:</span> {{ series.original_language }}
 
               <!-- Flag -->
-              <img class="flag" :src="getFlag(serie.original_language)" :alt="serie.original_language">
+              <img class="flag" :src="getFlag(series.original_language)" :alt="series.original_language">
             </div>
 
             <!-- Vote Average -->
             <div>
               <span>Media Voto:</span>
-              <span><i v-for="n in trasformVote(serie.vote_average)" :key="n" class="fa-solid fa-star star-space"></i></span>
+              <span>
+                <i v-for="n in trasformVote(series.vote_average)" :key="n" class="fas fa-star"></i>
+                <i v-for="n in 5 - trasformVote(series.vote_average)" :key="n" class="far fa-star"></i>
+              </span>
             </div>
 
             <!-- Overview -->
             <div>
               <span>Overview:</span>
-              <div class="overview">{{ serie.overview }}</div>
+              <div class="overview">{{ series.overview }}</div>
             </div>
           </div>
         </div>
@@ -100,10 +103,10 @@
 <script>
 export default {
 name: "MainPage",
-props: ['filmlist','serielist'] ,
+props: ['filmlist','serieslist'] ,
 methods : {
 
-// Sostituisce le bandiere mancanti
+// Sostituisce le bandiere mancanti:
 getFlag(Nationality) {
   if(Nationality == 'en') {
       Nationality = "gb";
@@ -119,11 +122,13 @@ getFlag(Nationality) {
       Nationality = "ch";
     } else if(Nationality == 'zh') {
       Nationality = "hk";
+    } else if(Nationality == 'da') {
+      Nationality = "dk";
     }
   return `https://countryflagsapi.com/png/${Nationality}`;
 },
 
-// Scarica le immagini di copertina
+// Scarica le immagini di copertina:
 getCoverImage(posterpath) {
   if(posterpath == null) {
     return `https://www.movienewz.com/wp-content/uploads/2014/07/poster-holder.jpg`;
@@ -131,14 +136,13 @@ getCoverImage(posterpath) {
   return `https://image.tmdb.org/t/p/w342${posterpath}`;
 },
 
-// Trasforma il voto in stelle da 1 a 5
+// Trasforma il voto in stelle da 1 a 5:
 trasformVote(star) {
   const voteStars = star / 2;
   return Math.round(voteStars);
 }
 }
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -155,16 +159,12 @@ main {
     justify-content: center;
     padding-top: 15px;
 
-  }
+    li {
+    width: calc((100% / 5) - 20px);
+    height: 100%;
+    border: 3px solid red;
 
-  li {
-  width: calc((100% / 5) - 20px);
-  height: 100%;
-  border: 1px solid red;
-
-  
-
-  .card {
+    .card {
     background-color: black;
     color: white;
     padding: 10px;
@@ -177,6 +177,7 @@ main {
     height: 320px;
     display: block;
     }
+
     .text {
       min-height: 320px;
       display: none;
@@ -202,20 +203,21 @@ main {
     .overview {
       font-style: italic;
       font-size: 14px;
-           }
-  }
-  
-  .flag {
-    margin-left: 5px;
-    border: 1px solid black;
-    width: 20px;
-    height: 14px;
-  }
-
-  span {
-    i {
-    color: yellow;
     }
+
+    .flag {
+      margin-left: 5px;
+      border: 1px solid black;
+      width: 20px;
+      height: 14px;
+    }
+
+    span {
+      i {
+      color: yellow;
+      }
+    }
+  }
   }
 }
 }
