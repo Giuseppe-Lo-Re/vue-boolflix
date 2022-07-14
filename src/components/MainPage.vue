@@ -11,7 +11,11 @@
         <div class="card">
 
           <!-- Cover Image -->
-          <img class="cover" :src="getCoverImage(film.poster_path)" :alt="film.title">
+          <img 
+            :src="getCoverImage(film.poster_path)" 
+            :alt="film.title" 
+            class="cover"
+          >
           <div class="text">
 
             <!-- Title -->
@@ -30,15 +34,33 @@
               <span>Lingua: </span> {{ film.original_language }} 
 
               <!-- Flag -->
-              <img class="flag" :src="getFlag(film.original_language)" :alt="film.original_language">
+              <img 
+                :src="getFlag(film.original_language)" 
+                :alt="film.original_language"
+                class="flag"
+              >
             </div>
 
             <!-- Vote Average -->
             <div>
               <span>Media Voto: </span>
+
+              <!-- Full Stars -->
               <span>
-                <i v-for="n in trasformVote(film.vote_average)" :key="n" class="fa-solid fa-star star-space"></i>
-                <i v-for="n in 5 - trasformVote(film.vote_average)" :key="n" class="far fa-star"></i>
+                <i 
+                  v-for="n in trasformVote(film.vote_average)" 
+                  :key="n" 
+                  class="fa-solid fa-star star-space"
+                >
+                </i>
+
+                <!-- Empty Stars -->
+                <i 
+                  v-for="n in 5 - trasformVote(film.vote_average)" 
+                  :key="n" 
+                  class="far fa-star"
+                >
+                </i>
                 </span>
             </div>
 
@@ -62,7 +84,11 @@
         <div class="card">
 
           <!-- Cover Image -->
-          <img class="cover" :src="getCoverImage(series.poster_path)" :alt="series.name">
+          <img 
+            :src="getCoverImage(series.poster_path)" 
+            :alt="series.name"
+            class="cover" 
+          >
           <div class="text">
 
             <!-- Title -->
@@ -80,15 +106,29 @@
               <span>Lingua: </span> {{ series.original_language }}
 
               <!-- Flag -->
-              <img class="flag" :src="getFlag(series.original_language)" :alt="series.original_language">
+              <img 
+                :src="getFlag(series.original_language)" 
+                :alt="series.original_language"
+                class="flag"
+              >
             </div>
 
             <!-- Vote Average -->
             <div>
               <span>Media Voto: </span>
               <span>
-                <i v-for="n in trasformVote(series.vote_average)" :key="n" class="fas fa-star"></i>
-                <i v-for="n in 5 - trasformVote(series.vote_average)" :key="n" class="far fa-star"></i>
+                <i 
+                  v-for="n in trasformVote(series.vote_average)" 
+                  :key="n" 
+                  class="fas fa-star"
+                >
+                </i>
+                <i 
+                  v-for="n in 5 - trasformVote(series.vote_average)" 
+                  :key="n" 
+                  class="far fa-star"
+                >
+                </i>
               </span>
             </div>
 
