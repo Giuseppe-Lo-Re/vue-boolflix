@@ -49,7 +49,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 15px;
+  padding-inline: 20px;
 
   img {
     width: 150px;

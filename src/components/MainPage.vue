@@ -194,6 +194,7 @@ trasformVote(star) {
 
 main {
   color: black;
+  padding: 0 5px 30px 5px;
 
   ul {
     display: flex;
@@ -230,7 +231,7 @@ main {
       min-height: 320px;
       display: none;
     }
-    
+
     &:hover .text {
       display: block;
     }
