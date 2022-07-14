@@ -12,7 +12,6 @@
 
           <!-- Cover Image -->
           <img class="cover" :src="getCoverImage(film.poster_path)" :alt="film.title">
-
           <div class="text">
 
             <!-- Title -->
@@ -60,7 +59,6 @@
 
           <!-- Cover Image -->
           <img class="cover" :src="getCoverImage(serie.poster_path)" :alt="serie.name">
-
           <div class="text">
 
             <!-- Title -->
@@ -94,7 +92,6 @@
             </div>
           </div>
         </div>
-
       </li>
     </ul>
   </main>
@@ -205,10 +202,8 @@ main {
     .overview {
       font-style: italic;
       font-size: 14px;
-      // overflow-y: scroll;
-    }
+           }
   }
-  
   
   .flag {
     margin-left: 5px;

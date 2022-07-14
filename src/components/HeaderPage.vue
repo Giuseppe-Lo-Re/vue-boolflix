@@ -59,10 +59,12 @@ header {
   input {
     padding: 10px;
   }
+  
   button {
     margin-left: 10px;
     padding: 10px;
     background-color: red;
+    color:white;
   }
 }
 </style>

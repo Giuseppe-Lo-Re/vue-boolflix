@@ -1,9 +1,14 @@
 <template>
   <div id="app">
 
-    <HeaderPage @runSearch="SearchText"/>
+    <HeaderPage 
+      @runSearch="SearchText"
+    />
     
-    <MainPage :filmlist="filmList" :serielist="serieList"/>
+    <MainPage 
+      :filmlist="filmList" 
+      :serielist="serieList"
+    />
 
   </div>
 </template>
@@ -30,6 +35,8 @@ export default {
   },
 
   methods: {
+
+  // Scarica i film attraverso l' API
   getFilmFromApi(userChoice) {
     axios.get(`${this.urlFilm}&query=${userChoice}`)
     .then((response) => {
@@ -37,18 +44,20 @@ export default {
     });
   },
   
+  // Scarica le serie attraverso l' API
   getSeriesFromApi(userChoice) {
     axios.get(`${this.urlSerie}&query=${userChoice}`)
     .then((response) => {
       this.serieList = response.data.results;
     });
   },
+
+  // Dopo la ricerca dell'utente fa partire le funzioni che scaricano i film e le serie
   SearchText(userChoice) {
     this.getFilmFromApi(userChoice);
     this.getSeriesFromApi(userChoice);
     }
   },
-  
 }
 </script>
 
