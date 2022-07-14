@@ -82,7 +82,7 @@
             <!-- Vote Average -->
             <div>
               <span>Media Voto:</span>
-              <span> <i v-for="n in trasformVote(serie.vote_average)" :key="n" class="fa-solid fa-star star-space"></i></span>
+              <span><i v-for="n in trasformVote(serie.vote_average)" :key="n" class="fa-solid fa-star star-space"></i></span>
             </div>
 
             <!-- Overview -->
