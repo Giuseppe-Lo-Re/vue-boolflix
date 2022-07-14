@@ -213,10 +213,10 @@ main {
       background-color: black;
       color: white;
       padding: 10px;
-      cursor: pointer;
       height: 340px;
       box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
       overflow: auto;
+      cursor: pointer;
 
     .cover {
       height: 320px;
