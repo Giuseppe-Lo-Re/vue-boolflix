@@ -222,15 +222,15 @@ main {
       display: block;
     }
 
-    .text {
-      min-height: 320px;
-      display: none;
-    }
-
     &:hover .cover {
       display: none;
     }
 
+    .text {
+      min-height: 320px;
+      display: none;
+    }
+    
     &:hover .text {
       display: block;
     }
